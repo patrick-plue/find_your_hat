@@ -5,7 +5,7 @@
 ### Instructions
 
 -   Clone the project
--   Run main.js
+-   Run build/main.js with node
 -   And enjoy!
 
 ### work in progress

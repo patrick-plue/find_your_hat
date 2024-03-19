@@ -1,0 +1,9 @@
+{
+    "compilerOptions": {
+        "outDir": "build",
+        "target": "ES6",
+        "moduleResolution": "Node",
+        "lib": ["es6"]
+    },
+    "include": ["src/**/*"]
+}
