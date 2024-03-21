@@ -11,8 +11,8 @@
 ### work in progress
 
 -   show instructions
--   start at random position
--   autogenerating fields
+-   ~~start at random position~~
+-   ~~autogenerating fields~~
 -   hard mode (increasing number of "holes" with every move)
 -   graphics
 -   validator to ensure mazes are solvable
