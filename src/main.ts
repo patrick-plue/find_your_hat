@@ -6,8 +6,8 @@ const fieldCharacter = '░';
 const pathCharacter = '*';
 
 class Field {
-    field: string[][];
-    constructor(field: string[][]) {
+    field: string[][] | null;
+    constructor(field: string[][] | null) {
         this.field = field;
     }
 
@@ -104,7 +104,12 @@ class Game {
     }
 
     startGame() {
+        if (!this.playground.field) {
+            this.playground.generateRandomField();
+        }
+
         this.status = 'go';
+
         this.yPosition = Math.floor(
             Math.random() * this.playground.field.length
         );
@@ -112,6 +117,7 @@ class Game {
             Math.random() * this.playground.field.length
         );
         this.playground.visitCell(this.yPosition, this.xPosition);
+
         while (this.status === 'go') {
             console.clear();
             this.playground.print();
@@ -125,13 +131,13 @@ class Game {
 
 // INIT
 
-const myField = new Field([
-    ['*', '░', '░'],
-    ['░', 'O', '░'],
-    ['░', '^', '░'],
-]);
+// const myField = new Field([
+//     ['*', '░', '░'],
+//     ['░', 'O', '░'],
+//     ['░', '^', '░'],
+// ]);
 
-myField.generateRandomField();
+const myField = new Field(null);
 
 const newGame = new Game(myField);
 

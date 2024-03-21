@@ -82,6 +82,9 @@ class Game {
         process.exit();
     }
     startGame() {
+        if (!this.playground.field) {
+            this.playground.generateRandomField();
+        }
         this.status = 'go';
         this.yPosition = Math.floor(Math.random() * this.playground.field.length);
         this.xPosition = Math.floor(Math.random() * this.playground.field.length);
@@ -97,11 +100,11 @@ class Game {
     }
 }
 // INIT
-const myField = new Field([
-    ['*', '░', '░'],
-    ['░', 'O', '░'],
-    ['░', '^', '░'],
-]);
-myField.generateRandomField();
+// const myField = new Field([
+//     ['*', '░', '░'],
+//     ['░', 'O', '░'],
+//     ['░', '^', '░'],
+// ]);
+const myField = new Field(null);
 const newGame = new Game(myField);
 newGame.startGame();
