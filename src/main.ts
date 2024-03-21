@@ -19,6 +19,20 @@ class Field {
         this.field[y][x] = '*';
     }
 
+    generateRandomField() {
+        let newField: any = [];
+        const size = Math.floor(Math.random() * 2 + 5);
+        for (let i = 0; i < size; i++) {
+            newField[i] = Array(size).fill(Math.random() > 0.5 ? 'O' : '░');
+        }
+        let randomPosition = [
+            Math.floor(Math.random() * size),
+            Math.floor(Math.random() * size),
+        ];
+        newField[randomPosition[0]][randomPosition[1]] = '^';
+        this.field = newField;
+    }
+
     print() {
         this.field.forEach((line) => console.log(line.toString()));
     }
@@ -91,6 +105,13 @@ class Game {
 
     startGame() {
         this.status = 'go';
+        this.yPosition = Math.floor(
+            Math.random() * this.playground.field.length
+        );
+        this.xPosition = Math.floor(
+            Math.random() * this.playground.field.length
+        );
+        this.playground.visitCell(this.yPosition, this.xPosition);
         while (this.status === 'go') {
             console.clear();
             this.playground.print();
@@ -110,5 +131,8 @@ const myField = new Field([
     ['░', '^', '░'],
 ]);
 
+myField.generateRandomField();
+
 const newGame = new Game(myField);
+
 newGame.startGame();
